@@ -1,6 +1,6 @@
-import 'package:authApp/db/db_helper.dart';
-import 'package:authApp/models/profileModel.dart';
-import 'package:authApp/providers/auth_provider.dart';
+import '../db/db_helper.dart';
+import '../models/profileModel.dart';
+import '../providers/auth_provider.dart';
 
 import '../screens/cars_screen.dart';
 import '../screens/main_screen.dart';
@@ -154,7 +154,9 @@ class MainDrawer extends StatelessWidget {
               color: Theme.of(context).primaryColor,
               size: 25,
             ),
-            onTap: () {},
+            onTap: () {
+              Provider.of<AuthProvider>(context).logout();
+            },
           ),
         ],
       ),

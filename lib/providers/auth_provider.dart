@@ -1,5 +1,5 @@
-import 'package:authApp/db/db_helper.dart';
-import 'package:authApp/models/profileModel.dart';
+import '../db/db_helper.dart';
+import '../models/profileModel.dart';
 import 'package:flutter/material.dart';
 
 import '../providers/urls.dart';

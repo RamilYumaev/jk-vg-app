@@ -1,11 +1,10 @@
-import 'package:authApp/providers/auth_provider.dart';
-import 'package:authApp/screens/auth/auth_screen.dart';
-import 'package:authApp/screens/main_screen.dart';
-import 'package:authApp/screens/splash_screen.dart';
+import './providers/auth_provider.dart';
+import './screens/auth/auth_screen.dart';
+import './screens/main_screen.dart';
+import './screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './screens/cars_screen.dart';
-import './screens/main_screen.dart';
 import './screens/profile_screen.dart';
 import './screens/realty_screen.dart';
 import './screens/settings_screen.dart';

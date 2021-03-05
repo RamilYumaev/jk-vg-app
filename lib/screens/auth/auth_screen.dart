@@ -19,14 +19,14 @@ class AuthScreen extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: FractionalOffset.topCenter,
-                  end: FractionalOffset.bottomCenter,
-                  colors: [
-                Colors.blue.withOpacity(0.60),
-                Color.fromARGB(255, 172, 149, 107).withOpacity(0.90),
-                // Colors.lightGreen.withOpacity(0.75),
-                Color.fromRGBO(106, 25, 49, 0.60),
-              ])),
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            colors: [
+              Colors.blue.withOpacity(0.60),
+              Color.fromARGB(255, 172, 149, 107),
+              Color.fromRGBO(106, 25, 49, 0.60)
+            ],
+          )),
         ),
         Container(
           width: deviceSize.width,
