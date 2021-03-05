@@ -323,6 +323,9 @@ class _AuthCardState extends State<AuthCard>
                               cursorColor: Colors.white,
                               enabled: _authMode == AuthMode.Signup,
                               decoration: _decorationField("Ваше отчество"),
+                              onSaved: (value) {
+                                _authData['patronymic'] = value;
+                              },
                             ),
                           ),
                           Padding(

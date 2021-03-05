@@ -1,9 +1,14 @@
+import 'package:authApp/db/db_helper.dart';
+import 'package:authApp/models/profileModel.dart';
+import 'package:authApp/providers/auth_provider.dart';
+
 import '../screens/cars_screen.dart';
 import '../screens/main_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/realty_screen.dart';
 import '../screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -26,13 +31,44 @@ class MainDrawer extends StatelessWidget {
             arrowColor: Colors.white,
             accountName: Container(
               margin: EdgeInsets.only(top: 20),
-              child: Text(
-                "Рамиль Анварович Юмаев",
-                style: TextStyle(fontSize: 17),
+              child: FutureBuilder(
+                future: DbHelper.db.readProfile(1),
+                builder: (BuildContext context,
+                    AsyncSnapshot<ProfileModel> snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(
+                      snapshot.data.fullName,
+                      style: TextStyle(fontSize: 17),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
               ),
             ),
+            // Container(
+            //   margin: EdgeInsets.only(top: 20),
+            //   child: Text(
+            //     "Рамиль Анварович Юмаев",
+            //     style: TextStyle(fontSize: 17),
+            //   ),
+            // ),
+            // FutureBuilder(
+            //     future: Provider.of<AuthProvider>(context).getProfileData(),
+            //     builder: (ctx, snapshot) =>
+            //         snapshot.connectionState == ConnectionState.waiting
+            //             ? Center(child: CircularProgressIndicator())
+            //             : Consumer<AuthProvider>(
+            //                 builder: (ctx, auth, ch) => ListView.builder(
+            //                     itemCount: auth.profile.length,
+            //                     itemBuilder: (ctx, i) => Column(
+            //                           children: [
+            //                             Text(auth.profile[i].lastName)
+            //                           ],
+            //                         )),
+            //               )),
             accountEmail: Text(
-              "ramilka06@inbox.ru",
+              "",
               style: TextStyle(color: Colors.white54),
             ),
             currentAccountPicture: CircleAvatar(

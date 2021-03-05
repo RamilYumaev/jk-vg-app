@@ -1,4 +1,5 @@
 import 'package:authApp/db/db_helper.dart';
+import 'package:authApp/models/profileModel.dart';
 import 'package:flutter/material.dart';
 
 import '../providers/urls.dart';
@@ -32,17 +33,26 @@ class AuthProvider with ChangeNotifier {
       String patronymic,
       int sex,
       String category) async {
+    ProfileModel profile = ProfileModel(
+        lastName: lastName,
+        firstName: firstName,
+        patronymic: patronymic,
+        email: email,
+        phone: phone,
+        sex: sex,
+        category: category);
+
     try {
       final myResponse = await http.post(Urls.addUserUrl,
           body: json.encode({
-            'email': email,
+            'email': profile.email,
             'password': password,
-            'lastName': lastName,
-            'firstName': firstName,
-            'patronymic': patronymic,
-            'phone': phone,
-            'sex': sex,
-            'registrationType': category,
+            'lastName': profile.lastName,
+            'firstName': profile.firstName,
+            'patronymic': profile.patronymic,
+            'phone': profile.phone,
+            'sex': profile.sex,
+            'registrationType': profile.category,
           }));
       final responseData = json.decode(myResponse.body);
       _token = responseData['apiToken'];
@@ -54,17 +64,25 @@ class AuthProvider with ChangeNotifier {
       }
     } catch (error) {}
 
-    DbHelper.insert('profile', {
-      'last_name': lastName,
-      'first_name': firstName,
-      'patronymic': patronymic,
-      'phone': phone,
-      'email': email,
-      'sex': sex,
-      'category': category,
-    });
+    DbHelper.db.insertProfile(profile);
+
+    // DbHelper.insert('profile', {
+    //   'last_name': lastName,
+    //   'first_name': firstName,
+    //   'patronymic': patronymic,
+    //   'phone': phone,
+    //   'email': email,
+    //   'sex': sex,
+    //   'category': category,
+    // });
+    //print(json.encode(db1));
     notifyListeners();
   }
+
+  // Future<void> getProfileData() async {
+  //   return  DbHelper.db.readProfile(1);
+  //   notifyListeners();
+  // }
 
   Future<void> saveToken(token) async {
     final pref = await SharedPreferences.getInstance();
