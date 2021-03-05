@@ -237,8 +237,8 @@ class _AuthCardState extends State<AuthCard>
                               style: TextStyle(color: Colors.white),
                               cursorColor: Colors.white,
                               enabled: _authMode == AuthMode.Signup,
-                              decoration:
-                                  _decorationField("Введите пароль повторно"),
+                              decoration: _decorationField(
+                                  "Введите, пожалуйста, пароль еще раз"),
                               obscureText: true,
                               validator: (_) {
                                 if (_passwordController.value !=
