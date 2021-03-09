@@ -64,7 +64,8 @@ class AuthProvider with ChangeNotifier {
       }
     } catch (error) {}
 
-    DbHelper.db.insertProfile(profile);
+    //  DbHelper.db.insertProfile(profile);
+    DbHelper.db.insertUserData(profile);
 
     // DbHelper.insert('profile', {
     //   'last_name': lastName,
