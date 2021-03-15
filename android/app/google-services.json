@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "687103159049",
+    "project_id": "jk-vg-app",
+    "storage_bucket": "jk-vg-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687103159049:android:99856b2596195f1204c1d8",
+        "android_client_info": {
+          "package_name": "com.example.authApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "687103159049-9vlua8hklq5pc7prcg90hbffp9d3bo06.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.authApp",
+            "certificate_hash": "86e107ed3e2852049ec33f750b9ff38d50fdc2c6"
+          }
+        },
+        {
+          "client_id": "687103159049-6k8bhkrc1r01t7g3q10f0oicmdk02hhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtT_6E-KgcqvebGRschqdREDdzyjwOdeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687103159049-6k8bhkrc1r01t7g3q10f0oicmdk02hhr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
