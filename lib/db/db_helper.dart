@@ -23,7 +23,7 @@ class DbHelper {
 
   initDB() async {
     Directory documentDirectory = await getExternalStorageDirectory();
-    print(documentDirectory.path);
+    print('db location :' + documentDirectory.path);
     String path = join(documentDirectory.path, 'authApp.db');
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
@@ -39,7 +39,7 @@ class DbHelper {
           "transfer_status INTEGER"
           ")");
       await db.execute("CREATE TABLE user_data("
-          "key TEXT NOT NULL UNIQUE,"
+          "key TEXT NOT NULL,"
           "value TEXT"
           ")");
     });
