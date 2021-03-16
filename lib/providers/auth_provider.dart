@@ -21,6 +21,9 @@ class AuthProvider with ChangeNotifier {
   }
 
   String get token {
+    if (_token == null) {
+      tryAutoLogin();
+    }
     return _token;
   }
 
@@ -64,8 +67,12 @@ class AuthProvider with ChangeNotifier {
       }
     } catch (error) {}
 
+    profile.id = _token;
+    print(_token);
+    print(profile.id);
+
     //  DbHelper.db.insertProfile(profile);
-    DbHelper.db.insertUserData(profile);
+    DbHelper.db.insertProfile(profile);
 
     // DbHelper.insert('profile', {
     //   'last_name': lastName,
@@ -107,7 +114,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> tryAutoLogin() async {
+  tryAutoLogin() async {
     final prefs = await SharedPreferences.getInstance();
     if (!prefs.containsKey('userData')) {
       return false;

@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:authApp/db/db_helper.dart';
 import 'package:authApp/drawers/main_drawer.dart';
-import 'package:authApp/models/profileModel.dart';
 import 'package:authApp/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -21,6 +17,7 @@ class MainScreen extends StatelessWidget {
             IconButton(
                 icon: Icon(Icons.exit_to_app),
                 onPressed: () {
+                  DbHelper.db.deleteProfile();
                   Provider.of<AuthProvider>(context).logout();
                 })
           ],

@@ -4,6 +4,7 @@ import 'package:authApp/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
+// ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
   static const routeName = "/profile";
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -24,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
       phone: "",
       sex: null,
       category: null);
-  int _sex;
+  //int _sex;
   var maskFormatter = new MaskTextInputFormatter(
       mask: '+###########', filter: {"#": RegExp(r'[0-9]')});
 
@@ -61,9 +62,9 @@ class ProfileScreen extends StatelessWidget {
                   }
                   _formKey.currentState.save();
                   print(_profile.fullName);
-                  DbHelper.db.updateProfileData(_profile);
-                  //  Navigator.of(context).pushNamed(MainScreen.routeName);
-                  // Scaffold.of(context).showSnackBar(
+                  DbHelper.db.updateProfile(_profile);
+                  Navigator.of(context).pushNamed(MainScreen.routeName);
+                  // Scaffold.of(ctx).showSnackBar(
                   //     SnackBar(content: Text("Успешно обновлено!")));
                 })
           ],
@@ -72,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
             key: _formKey,
             child: SingleChildScrollView(
               child: FutureBuilder(
-                future: DbHelper.db.readProfileData(),
+                future: DbHelper.db.readProfile(),
                 builder: (BuildContext context,
                     AsyncSnapshot<ProfileModel> snapshot) {
                   if (snapshot.hasData) {

@@ -17,7 +17,7 @@ class MainDrawer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           FutureBuilder(
-              future: DbHelper.db.readProfileData(),
+              future: DbHelper.db.readProfile(),
               builder:
                   (BuildContext context, AsyncSnapshot<ProfileModel> snapshot) {
                 if (snapshot.hasData) {
@@ -33,7 +33,7 @@ class MainDrawer extends StatelessWidget {
                           })
                     ],
                     currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.grey,
+                      backgroundColor: Colors.blue,
                       child: Text(
                         snapshot.data.lastName.characters.first.toUpperCase() +
                             snapshot.data.firstName.characters.first
@@ -195,6 +195,7 @@ class MainDrawer extends StatelessWidget {
               size: 25,
             ),
             onTap: () {
+              DbHelper.db.deleteProfile();
               Provider.of<AuthProvider>(context).logout();
             },
           ),
