@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "jk-vg-app",
+            "database": "/Volumes/192.168.199.4/Android/data/com.example.authApp/files/authApp.sql"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
